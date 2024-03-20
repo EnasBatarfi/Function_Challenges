@@ -1,4 +1,5 @@
 using System;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Xml.XPath;
 
@@ -34,9 +35,9 @@ namespace FunctionChallenges
             // Console.WriteLine($"Strings: {str1}, {str2}");
 
             // Challenge 3: Guessing Game
-            // Console.WriteLine("\nChallenge 3: Guessing Game");
+            Console.WriteLine("\nChallenge 3: Guessing Game");
             // Uncomment to test the GuessingGame method
-            // GuessingGame(); // Expected outcome: User input until the correct number is guessed or user inputs `Quit`
+            GuessingGame(); // Expected outcome: User input until the correct number is guessed or user inputs `Quit`
 
             // Challenge 4: Simple Word Reversal
             // Console.WriteLine("\nChallenge 4: Simple Word Reversal");
@@ -63,6 +64,44 @@ namespace FunctionChallenges
             }
             return str.Append($"; {sum}");
 
+        }
+        public static void GuessingGame()
+        {
+            Random random = new Random();
+            int number = random.Next(1, 100);
+            Console.WriteLine(number);
+
+            while (true)
+            {
+                Console.Write("Guess the number between 1 and 100, or type 'quit' to exit: ");
+                string input = Console.ReadLine() ?? "";
+                input.ToLower();
+                if (input == "quit")
+                {
+                    Console.WriteLine("End the game. The number was: " + number);
+
+                    break;
+                }
+                if (!int.TryParse(input, out int guessNumber) || guessNumber < 1 || guessNumber > 100)
+                {
+                    Console.WriteLine("Invalid input. Please enter a number between 1 and 100");
+                    continue;
+                }
+                if (guessNumber < number)
+                {
+                    Console.WriteLine("Too low. Try again...");
+                }
+                else if (guessNumber > number)
+                {
+                    Console.WriteLine("Too high. Try again...");
+                }
+                else
+                {
+                    Console.WriteLine("CONGRATULATIONS! YOU'VE GUESSED THE NUMBER " + number);
+                    break;
+                }
+
+            }
         }
     }
 }
