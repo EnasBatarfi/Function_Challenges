@@ -56,7 +56,7 @@ namespace FunctionChallenges
                     case string: str.Append($"{x} "); break;
                 };
             }
-
+            // This if statement to just make the format as expected "Hello World; 300" not "Hello World ; 300"
             if (str.Length > 0)
             {
                 str.Remove(str.Length - 1, 1);
