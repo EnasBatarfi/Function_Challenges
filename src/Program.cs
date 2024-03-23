@@ -30,9 +30,13 @@ namespace FunctionChallenges
                     }
 
                     // Validating user input
-                    if (!int.TryParse(input, out int challengeNumber) || challengeNumber < 1 || challengeNumber > 4)
+                    if (!int.TryParse(input, out int challengeNumber))
                     {
                         throw new ArgumentException("Invalid input, try again");
+                    }
+                    if (challengeNumber < 1 || challengeNumber > 4)
+                    {
+                        throw new ArgumentException("Please enter a valid challenge number between 1 and 4");
                     }
 
                     // Executing the selected challenge
@@ -193,9 +197,14 @@ namespace FunctionChallenges
                 }
 
                 // Validating user input
-                if (!int.TryParse(input, out int guessNumber) || guessNumber < 1 || guessNumber > 100)
+                if (!int.TryParse(input, out int guessNumber))
+                {
+                    throw new ArgumentException("Invalid input. Please enter only number");
+                }
+                if (guessNumber < 1 || guessNumber > 100)
                 {
                     throw new ArgumentException("Invalid input. Please enter a number between 1 and 100");
+
                 }
 
                 // Providing feedback on the user's guess
