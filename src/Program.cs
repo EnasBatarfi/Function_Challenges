@@ -141,7 +141,7 @@ namespace FunctionChallenges
                 }
                 else
                 {
-                    parameters[i] = inputParams[i]; // Otherwise, store it as string
+                    parameters[i] = inputParams[i];
                 }
             }
 
@@ -167,7 +167,7 @@ namespace FunctionChallenges
             {
                 string str1 = (string)obj1;
                 string str2 = (string)obj2;
-                SwapObjects(ref str1, ref str2); // Swapping strings
+                SwapObjects(ref str1, ref str2);
                 Console.WriteLine($"Strings: {str1}, {str2}");
             }
             else
@@ -269,16 +269,10 @@ namespace FunctionChallenges
                 }
             }
 
-            // Checking if any strings were appended
-            if (str.Length == 0)
-                // If no strings were appended, append the sum only
-                str.Append($"{sum}");
-            else
-                // If strings were appended remove the last space and append the sum
-                str.Remove(str.Length - 1, 1).Append($"; {sum}");
-
-            // Returning the result
-            return str;
+            // Checking If no strings were appended then append the sum only
+            // else If strings were appended remove the last space and append the sum
+            // Then returning the result
+            return str.Length == 0 ? str.Append($"{sum}") : str.Remove(str.Length - 1, 1).Append($"; {sum}");
         }
 
         // Method to reverse words in a sentence
